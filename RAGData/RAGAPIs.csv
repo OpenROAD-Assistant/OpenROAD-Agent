@@ -1,0 +1,193 @@
+Description:,Function Name:,Parameters:,Return Type:
+Get the openroad.Tech object,openroad.Tech(),,openroad.Tech
+Read .lib files,openroad.Tech.readLiberty(,str(file_name),
+Read .lef files,openroad.Tech.readLef(,str(file_name),
+Get the openroad db via openroad.Tech object,openroad.Tech.getDB(),,odb.dbDatabase
+Get the openroad.Design object,openroad.Design(,openroad.Tech,openroad.Design
+Get the I/O pin placer,openroad.Design.getIOPlacer(),,ppl.IOPlacer
+Use the name of the layer to get the odb.dbTechLayer object,openroad.Design.getTech().getDB().getTech().findLayer(,str(layer_name),odb.dbTechLayer
+Get the parameters of the IO pin placer,ppl.IOPlacer.getParameters(,,ppl.Parameters
+Set the minimum distance between each pin of the IO pin placer,ppl.Parameters.setMinDistance(,int(min_dist),
+Get the setting of the minimum distance between each pin of the IO pin placer,ppl.Parameters.getMinDistance(),,int
+"Set the unit for calling ppl.Parameters.setMinDistance(int) in ""number of tracks"" or in openroad's unit of the IO pin placer",ppl.Parameters.setMinDistanceInTracks(,bool(in_track),
+"Check if the unit fot calling ppl.Parameters.setMinDistance(int) of the IO pin placer is in ""number of tracks"" or in openroad's unit, return True if is in ""number of tracks”",ppl.Parameters.getMinDistanceInTracks(),,bool
+Get the floorplanner,openroad.Design.getFloorplan(),,ifp.InitFloorplan
+"get the minimum placing unit of the design, the input is the name of the site desifned in the technology file",ifp.InitFloorplan.findSite(,str(site),odb.dbSite
+"Create tracks, must call this after floorplanning",ifp.InitFloorplan.makeTracks(),,
+"Perform floorplanning, utilization is in [0, 100]%. The base_site determines the single-height rows.  For hybrid rows it is a site containing a row pattern.",ifp.InitFloorplan.initFloorplan(,"float(utilization), float(aspect_ratio), int(core_space_bottom), int(core_space_top), int(core_space_left), int(core_space_right), odb.dbSite",
+"Perform floorplanning, the base_site determines the single-height rows.  For hybrid rows it is a site containing a row pattern.",ifp.InitFloorplan.initFloorplan(,"odb.Rect(die), odb.Rect(core), odb.dbSite(base_site)",
+Create an openroad.odb.Rect object,odb.Rect(,"int(x1), int(y1), int(x2), int(y2)",odb.Rect
+Similar to openroad.get_db_block,openroad.Design.getBlock(),,odb.dbBlock
+Get the name of the pin,openroad.Design.getITermName(,odb.dbITerm(),str
+Check if a instance is a part of clock nets,openroad.Design.isInClock(,odb.dbInst(),bool
+Read the Verilog files into OpenROAD,openroad.Design.readVerilog(,str(file_name),
+Read the design file in DEF format (containing placement and routing information),openroad.Design.readDef(,str(file_name),
+Find the top module of the Verilog file and connect all other modules. The Verilog files must be read into OpenROAD first.,openroad.Design.link(,str(design_name),
+Read the design file written in OpenROAD database format,openroad.Design.readDb(,str(file_name),
+Write the design file in OpenROAD database format,openroad.Design.writeDb(,str(file_name),
+Change the unit from micron (um) to the unit used in OpenROAD,openroad.Design.micronToDBU(,float(coord),int
+Similar to openroad.get_db_tech(),openroad.Design.getTech(),,openroad.Tech
+Check is a library cell (master cell) is a buffer,openroad.Design.isBuffer(,odb.dbMaster(),bool
+Check if a library cell (master cell) is an inverter,openroad.Design.isInverter(,odb.dbMaster(),bool
+Check if a library cell (master cell) is a flip-flop,openroad.Design.isSequential(,odb.dbMaster(),bool
+Check if a pin is connected to VDD or VSS net,openroad.Design.isInSupply(,odb.dbITerm(),bool
+Get the actual physical wirelength of a routed net,openroad.Design.getNetRoutedLength(,odb.dbNet(),int
+"Write DEF file, str is the name of the file",openroad.Design.writeDef(,str(file_name),
+Get the openroad.Timing object,openroad.Timing(,openroad.Design,openroad.Timing
+Get the sum of switching and internal power of an instance,openroad.Timing.dynamicPower(,"odb.dbInst(), openroad.Timing.getCorners()[int(index)]",float
+Get the sum of wire capacitance and pin capacitance of a Net,openroad.Timing.getNetCap(,"odb.dbNet(), openroad.Timing.getCOrners()[int(index)], openroad.Timing.Max",float
+Get the sum of wire capacitance and pin capacitance of a Net,openroad.Timing.getNetCap(,"odb.dbNet(), openroad.Timing.getCOrners()[int(index)], openroad.Timing.Min",float
+Get the maximum rising arrival time of a pin across all corners,openroad.Timing.getPinArrival(,"odb.dbITerm(), openroad.Timing.Rise, openroad.Timing.Max",float
+Get the minimum rising arrival time of a pin across all corners,openroad.Timing.getPinArrival(,"odb.dbITerm(), openroad.Timing.Rise, openroad.Timing.Min",float
+Get the maximum falling arrival time of a pin across all corners,openroad.Timing.getPinArrival(,"odb.dbITerm(), openroad.Timing.Fall, openroad.Timing.Max",float
+Get the minimum falling arrival time of a pin across all corners,openroad.Timing.getPinArrival(,"odb.dbITerm(), openroad.Timing.Fall, openroad.Timing.Min",float
+Get the maximum rising arrival time of a port across all corners,openroad.Timing.getPinArrival(,"odb.dbBTerm(), openroad.Timing.Rise, openroad.Timing.Max",float
+Get the minimum rising arrival time of a port across all corners,openroad.Timing.getPinArrival(,"odb.dbBTerm(), openroad.Timing.Rise, openroad.Timing.Min",float
+Get the maximum falling arrival time of a port across all corners,openroad.Timing.getPinArrival(,"odb.dbBTerm(), openroad.Timing.Fall, openroad.Timing.Max",float
+Get the minimum falling arrival time of a port across all corners,openroad.Timing.getPinArrival(,"odb.dbBTerm(), openroad.Timing.Fall, openroad.Timing.Min",float
+Get the maximum rising slack of a pin across all corners ,openroad.Timing.getPinSlack(,"odb.dbITerm(), openroad.Timing.Rise, openroad.Timing.Max",float
+Get the minimum rising slack of a pin across all corners ,openroad.Timing.getPinSlack(,"odb.dbITerm(), openroad.Timing.iming.Rise, openroad.Timing.Min",float
+Get the maximum falling slack of a pin across all corners ,openroad.Timing.getPinSlack(,"odb.dbITerm(), openroad.Timing.Fall, openroad.Timing.Max",float
+Get the minimum falling slack of a pin across all corners ,openroad.Timing.getPinSlack(,"odb.dbITerm(), openroad.Timing.Fall, openroad.Timing.Min",float
+Get the maximum rising slack of a port across all corners ,openroad.Timing.getPinSlack(,"odb.dbBTerm(), openroad.Timing.Rise, openroad.Timing.Max",float
+Get the minimum rising slack of a port across all corners ,openroad.Timing.getPinSlack(,"odb.dbBTerm(), openroad.Timing.Rise, openroad.Timing.Min",float
+Get the maximum falling slack of a port across all corners ,openroad.Timing.getPinSlack(,"odb.dbBTerm(), openroad.Timing.Fall, openroad.Timing.Max",float
+Get the minimum falling slack of a port across all corners ,openroad.Timing.getPinSlack(,"odb.dbBTerm(), openroad.Timing.Fall, openroad.Timing.Min",float
+Get the minimum slew of the pin across all corners,openroad.Timing.getPinSlew(,"odb.dbITerm, openroad.Timing.Min",float
+Get the maximum slew of the pin across all corners,openroad.Timing.getPinSlew(,"odb.dbITerm, openroad.Timing.Max",float
+Get the minimum slew of the port across all corners,openroad.Timing.getPinSlew(,"odb.dbBTerm, openroad.Timing.Min",float
+Get the maximum slew of the port across all corners,openroad.Timing.getPinSlew(,"odb.dbBTerm, openroad.Timing.Max",float
+Get the maximum input capacitance of a pin,openroad.Timing.getPortCap(,"odb.ITerm, openroad.Timing.getCorners()[int(index)], openroad.Timing.Max",float
+Get the minimum input capacitance of a pin,openroad.Timing.getPortCap(,"odb.ITerm, openroad.Timing.getCorners()[int(index)], openroad.Timing.Min",float
+Check if the pin is the end point of a timing path,openroad.Timing.isEndpoint(,odb.ITerm(),bool
+Check if the port is the end point of a timing path,openroad.Timing.isEndpoint(,odb.BTerm(),bool
+"Check if the number is ""inf""",openroad.Timing.isTimeInf(,float(time),bool
+Get the instance's leakage power,openroad.Timing.staticPower(,"odb.dbInst, openroad.Timing.getCorners()[int(index)]",float
+Get the global placer,openroad.Design.getReplace(),,gpl.Replace
+"Perform global placement (don't call this function if ""gpl.Replace.doInitialPlace()"" or ""gpl.Replace.doNesterovPlace()"" is called)",gpl.Replace.doIncrementalPlace(,int(thread),
+"Perform global placement (don't call this function if ""gpl.Replace.doIncrementalPlace()"" is called)",gpl.Replace.doInitialPlace(),,
+"Use ""electrostatic force equations"" to perform global placement (don't call this function if ""gpl.Replace.doIncrementalPlace()"" is called)",gpl.Replace.doNesterovPlace(,int(thread),int
+Get the macro placer,openroad.Design.getMacroPlacer(),,mpl.MacroPlacer
+"Run macro placement and push all macros to the design boundary, must be called after global placement",mpl.MacroPlacer.placeMacrosCornerMaxWl(),,
+"Run macro placement and place all macros together, must be called after global placement",mpl.MacroPlacer.placeMacrosCornerMinWL(),,
+Snap the macro to a layer,mpl.MacroPlacer.setSnapLayer(,odb.dbTechLayer,
+Set the fence region as a user defined area in microns,mpl.MacroPlacer.setFenceRegion(,"float(lx), doubl(ly), float(ux), float(uy)",
+Set the channel width between macros,mpl.MacroPlacer.setChannel(,"float(channel_x), float(channel_y)",
+Set the halo around macros,mpl.MacroPlacer.setHalo(,"float(halo_x), float(halo_y)",
+Get the openroad db,openroad.get_db(),,odb.dbDatabase
+Getting openroad.Tech object via openroad.Design object. Similar to openroad.Design.getTech(),openroad.get_db_tech(),,odb.dbTech
+Similar to openroad.Design.getBlock,openroad.get_db_block(),,odb.dbBlock
+"Get the detailed placer, or called as legalizer",openroad.Design.getOpendp(),,dpl.Opendp
+"Perform legalization, max_displacment is in sites. use zero for defaults.",dpl.Opendp.detailedPlacement(,"int(max_displacement_x), int(max_displacement_y), str(report_file_name), bool(disallow_one_site_gaps)",
+Get legalization report,dpl.Opendp.reportLegalizationStats(),,
+Check legalization result,dpl.Opendp.checkPlacement(,"bool(verbose), bool(disallow_one_site_gaps), str(report_file_name)",
+"Place filler cells after legalization, prefix is the naming pattern of the filler cells",dpl.Opendp.fillerPlacement(,"list(odn.dbMaster), str(prefix)",
+Remove filler cells,dpl.Opendp.removeFillers(),,
+"Propagate the clock signal, openroad.Design.evalTclString(“create_clock -period 20 [get_ports clk] -name core_clock”) must be celled before this.","openroad.Design.evalTclString(""set_propagated_clock [core_clock]"")",,
+Set the unit resistance value and unit capacitance value of the clock net,"openroad.Design.evalTclString(""set_wire_rc -clock -resistance 0.03574 -capacitance 0.07516"")",,
+Set the unit resistance value and unit capacitance value of regular signal net,"openroad.Design.evalTclString(""set_wire_rc -signal -resistance 0.03574 -capacitance 0.07516"")",,
+Get the module to perform CTS (clock tree synthesis),openroad.Design.getTritonCts(),,cts.TritonCTS
+Run CTS (clock tree synthesis),cts.TritonCTS.runTritonCts(,,
+Report the CTS result,cts.TritonCTS.reportCtsMetrics(,,
+Get the parameter seeting of the CTS module,cts.TritonCTS.getParms(,,cts.CtsOptions
+Get the character setting of the CTS module,cts.TritonCTS.getCharacterization(,,cts.TechChar
+"Set the clock net by the name, return 0 if complete normally, return 1 if cannot find the clock net with the name",cts.TritonCTS.setClockNets(,str(name),
+Set the available clock buffer library cells with he name,cts.TritonCTS.setBufferList(,str(buffers),
+Set the rooting clock buffer (starting point) with the name,cts.TritonCTS.setRootBuffer(,str(buffers),
+Set the sinking clock buffer (end point) with the name,cts.TritonCTS.setSinkBuffer(,str(buffers),
+Set the reference unit for sgmenting the wire,cts.CtsOptions.setWireSegmentUnit(,,
+"Get the PDN (power grid, or called power delivery network) generator",openroad.Design.getPdnGen(,,pdn.PdnGen
+Get the report of current PDN generation,pdn.PdnGen.report(,,
+Get all voltage domain of the design,pdn.PdnGen.getDomains(,,list(pdn.VoltageDomain)
+Find the voltage domain with the name of the domain,pdn.PdnGen.findDoamin(,str(name),pdn.VoltageDomain
+"Set the voltage domain of the design core, power means the ower net, ground means the ground net",pdn.PdnGen.setCoreDomain(,"odb.dbNet(power), odb.dbNet(switched_power), odb.dbNet(ground), list(odb.dbNet)",
+"Build the PDN, if ""trim"" is True, then will clean up some vias and trim the shape of smoe wires. If ""trim"" is set to False, then the PDN will remain the same",pdn.PdnGen.buildGrids(,bool(trim),
+Find the high level PDN grid with the name,pdn.PdnGen.findGrid(,str(name),
+"Create the high level PDN grid for the macro. ""domain"" is the voltage domain. ""name"" will be the name of this PDN grid. ""starts_with"" can be one of ""pdn.GRID, pdn.POWER, or pdn.GROUND"". ""inst"" is the target macro. ""halo"" is the halo set around the macro. ""pg_pins_to_boundary"" is set to True if the VDD and VSS pins of the macro is set to be around the macro, is is set to False, then VDD and VSS pins will appear within the macro block.",pdn.PdnGen.makeInstanceGrid(,"pdn.VoltageDomain(domain), str(name), pdn.StartsWith(starts_with), odb.dbInst(inst), list(int(halo)), bool(pg_pins_to_boundary), bool(default_grid), list(odb.dbTechLayer(generate_obstructions)), bool(is_bump)",
+"Create the PDN ring around the design or the macro. ""grid"" is the high level PDN grid. ""layer0"" and ""layer1"" are the two layers to place the metal stripes of the PDN ring. ""width0"" and ""spacing0"" are the settings of ""layer0"". ""width1"" and ""spacing1"" are the two settings of ""layer1"". ""starts_with"" can be one of ""pdn.GRID, pdn.POWER, or pdn.GROUND"". ""offset"" is the offset setting of the PDN ring. ""pad_offset"" is the offset of padding of the PDN ring. ""extend"" is set to False then the PDN ring will remain the same, if set to True, then it will extend to the boundary. ""pad_pin_layers"" is a list of layers that will connect to pad. ""nets"" can be an empty list.",pdn.PdnGen.makeRing(,"pdn.Grid(grid), odb.dbTechLayer(layer0), int(width0),int(spacing0), odb.dbTechLayer(layer1), int(width1), int(spacing1), pdn.StartsWith(starts_with), list(int(offset)), list(int(pad_offset)), bool(extend), list(odb.dbTechLayer(pad_pin_layers), list(odb.dbNet(nets)",
+"Create the PDN stripes at the lowest metal layer and following the pin pattern of the cells. ""extend"" can be either of ""pdn.CORE, pdn.RINGS, pdn.BOUNDARY, or pdn. FIXED"". ""layer"" is the metal layer place the PDN stripes. ""width"" specifies the metal stripe width. ""grid"" is the high level PDN grid.",pdn.PdnGen.makeFollowpin(,"pdn.Grid(grid), odb.dbTechLayer(layer), int(width), pdn.ExtensionMode(extend)",
+"Create the PDN stripes generating pattern. ""grid"" is the high level PDN grid. ""layer"" specifies the metal layer. ""starts_with"" can be one of ""pdn.GRID, pdn.POWER, or pdn.GROUND"". ""extend"" can be either of ""pdn.CORE, pdn.RINGS, pdn.BOUNDARY, or pdn. FIXED"". The rest are the settings of the physical dimension of the metal stripes.",pdn.PdnGen.makeStrap(,"pdn.Grid(grid), odb.dbTechLayer(layer), int(width), int(spacing), int(pitch), int(offset), int(number_of_straps), bool(snap), pdn.StartsWith(starts_with), pdn.ExtensionMode(extend), list(odb.dbNet(nets))",
+"Connect the stripes between two metal layers (creating vias). ""grid"" is the high level PDN grid. ""layer0"" and ""layer1"" specify the two metal layers. ""cut_pitch_x"" and ""cut_pitch_y"" specify the cut via generating pattern. ""vias"" is a list of vis generating rules defined in the technology file. ""max_rows"" and ""max_columns"" are the settings of the numbers of rows and columns. The key and value of ""dict()"" are odb.dbTechLayer and int. ""dont_use_vias"" is the name of the name of the vis generating rule you do not want to use.",pdn.PdnGen.makeConnect(,"pdn.Grid(grid), odb.dbTechLayer(layer0), odb.dbTechLayer(layer1), int(cut_pitch_x), int(cut_pitch_y), list(odb.dbTechViaGenerateRule(vias)), list(odb.dbTechVia(techvias), int(max_rows), int(max_columns), list(odb.dbTechLayer(ongrid)), dict(), str(dont_use_vias)",
+Rip up the selected VDD/VSS net,pdn.PdnGen.ripUp(,(odb.dbNet net),
+Check the PDN setup at the end of all pattern are defined,pdn.PdnGen.checkSetup(,,
+"Write the PDN generation result to OpenROAD database. Usually set ""add_pins"" to True. ""report_file"" specifies the name of the report file.",pdn.PdnGen.writeToDb(,"bool(add_pins), str(report_file)",
+Get the PDN analysis tool,openroad.Design.getPDNSim(),,
+Specifies the target VDD/VSS net,psm.PDNSim.setNet(,odb.dbNet(net),
+"Analyze the PDN, if set all files to enpty strings and set ""enable_em"" to False, PDNSim will use the default setting.",psm.PDNSim.analyzePowerGrid(,"str(voltage_file), bool(enable_em), str(em_file), str(error_file)",
+"Perform IR drop analysis, ""layer"" specifies the layer.",psm.PDNSim.getIRDropForLayer(,odb.dbTechLayer(layer),
+Set the corner information for the PDN analysis tool.,"openroad.Design.evalTclString(f""psm::set_corner [sta::cmd_corner]"")",,
+Get the global router.,openroad.Design.getGlobalRouter(),,grt.GlobalRouter
+Set the lowest routing layer,grt.GlobalRouter.setMinRoutingLayer(,int(min_layer),
+Set the highest routing layer,grt.GlobalRouter.setMaxRoutingLayer(,int(max_layer),
+Set the lowest routing layer for clock net,grt.GlobalRouter.setMinLayerForClock(,int(min_layer),
+Set the highest routing layer for clock net,grt.GlobalRouter.setMaxLayerForClock(,int(max_layer),
+Set the iteration to run if facing overflow in some gcells,grt.GlobalRouter.setOverflowIterations(,int(iterations),
+"Run global routing, all default values are False.",grt.GlobalRouter.globalRoute(,"bool(save_guides), bool(start_incremental), bool(end_incremental)",
+Get the detailed router,openroad.Design.getTritonRoute(),,drt.TritonRoute
+Run detailed routing.,drt.TritonRoute.main(),,
+Get the amount of DRVs,drt.getNumDRVs(),,int
+Get the parameter settings of the detailed router.,drt.ParamStruct(),,drt.ParamStruct
+Number of iteraion of detailed routing. Assign an integer to this variable,drt.ParamStruct.drouteEndIter(),,
+Assign boolean to this variable to enable via generating during detailed routing,drt.ParamStruct.enableViaGen(),,
+Find the instance using the name of that instance,odb.dbBlock.findInst(,str(name),odb.dbInst
+Get a list of all nets,odb.dbBlock.getNets(),,list(odb.dbNet)
+Get a list of all I/O ports,odb.dbBlock.getBTerms(),,list(odb.dbBTerm)
+Find the I/O port using the name of that I/O port,odb.dbBlock.findBTerm(,str(name),odb.dbBTerm
+Get a list of all pins,odb.dbBlock.getITerms(),,list(odb.dbITerm)
+Find the pin using the name of that pin,odb.dbBlock.findITerm(,str(name),odb.dbITerm
+Get a list of all instances,odb.dbBlock.getInsts(),,list(odb.dbInst)
+Get db unit per micron (um),odb.dbBlock.getDbUnitsPerMicron(),,int
+Get the core rectangle,odb.dbBlock.getCoreArea(),,odb.Rect
+Get a list of all rows in the design,odb.dbBlock.getRows(),,list(odb.dbRow)
+Get the site used in this row,odb.dbRow.getSite(),,odb.dbSite
+Get the bottom left x location of this rectangle,odb.Rect.xMin(),,int
+Get the bottom left y location of this rectangle,odb.Rect.yMin(),,int
+Get the top right x location of this rectangle,odb.Rect.xMax(),,int
+Get the top right y location of this rectangle,odb.Rect.yMax(),,int
+Connect pins with nets. odb.dbBlock.addGlobalConnect should be executed before calling this function,odb.dbBlock.globalConnect(),,
+"Given the pattern of the instance names, connect the net to the pins of instances that match the pin pattern",odb.dbBlock.addGlobalConnect(,"odb.dbRegion(region), str(instPattern), str(pinPattern), odb.dbNet(net), bool(do_connect)",
+Getting openroad.Tech object via openroad.odb.dbBlock object. Similar to openroad.Design.getTech(),odb.dbBlock.getTech(),,odb.dbTech
+"Return True if the net is marked as selected, return False if the net is not marked as selected.",odb.dbNet.isSelect(),,bool
+Get the name of the net,odb.dbNet.getName(),,str
+"Set the wire type of the net. Input can only be one of the followings: (""NONE"", ""COVER"", ""FIXED"", ""ROUTED"", ""SHIELD"", “NOSHIELD"")",odb.dbNet.setWireType(,str,
+"Get the odb.dbWireType object in string. Return value can be one of the followings: (""NONE"", ""COVER"", ""FIXED"", ""ROUTED"", ""SHIELD"", ""NOSHIELD"")",odb.dbNet.getWireType(,,str
+Get the total coupling capacitance of the net,odb.dbNet.getTotalCouplingCap(),,float
+Get the total capacitance of the net,odb.dbNet.getTotalCapacitance(),,float
+Get the total resistance of the net,odb.dbNet.getTotalResistance(),,float
+Get all pins of the net,odb.dbNet.getITerms(),,list(odb.dbITerm)
+Get all pins of the instance,odb.dbInst.getITerms(),,list(odb.dbITerm)
+Get the name of the instance,odb.dbInst.getName(),,str
+Get the x y location as a odb.Point object of the instance. Similar to odb.dbInst.getLocation(),odb.dbInst.getOrigin(),,odb.Point
+Get the x location of the odb.Point object,odb.Point.getX(),,int
+Get the y location of the odb.Point object,odb.Point.getY(),,int
+Set the x y location of the instance. Similar to odb.dbInst.setLocation(),odb.dbInst.setOrigin(,"int(x), int(y)",
+Get the x and y location as a odb.Point object of the instance. Similar to odb.dbInst.getOrigin(),odb.dbInst.getLocation(),,odb.Point
+Set the x and y location of the instance. Similar to odb.dbInst.setOrigin(),odb.dbInst.setLocation(,"int(x), int(y)",
+"Get the placement status of the instance. Status can only be one of the followings: (""NONE"", ""UNPLACED"", ""SUGGESTED"", ""PLACED"", ""LOCKED"", ""FIRM"", “COVER"")",odb.dbInst.getPlacementStatus(),,str
+"Set the placement status of the instance. Status can only be one of the followings: (""NONE"", ""UNPLACED"", ""SUGGESTED"", ""PLACED"", ""LOCKED"", ""FIRM"", “COVER"")",odb.dbInst.setPlacementStatus(,str,
+"Get the rotation (orientation) as a string of the instance. Orient can only be one of the followings: (""R0"", ""R90"", ""R180"", ""R270"", ""MY"", ""MYR90"", ""MX"", “MXR90"")",odb.dbInst.getOrient(),,str
+"Set the rotation (orientation) of the instance. Orient can only be one of the followings: (""R0"", ""R90"", ""R180"", ""R270"", ""MY"", ""MYR90"", ""MX"", “MXR90"")",odb.dbInst.setOrient(,str,
+Get the dbTransform object of the instance.,odb.dbInst.getTransform(),,odb.dbTransform
+Set the dbTransform object of the instance.,odb.dbInst.setTransform(,odb.dbTransform(transform),
+"Get the orientation (rotation) of the transform object, odb.dbInst.getTransform() function must be called before calling this function.",odb.dbTransform.getOrient(),,odb.dbOrientType
+"Get the x and y location of the transform object, odb.dbInst.getTransform() function must be called before calling this function.",odb.dbTransform.getOffset(),,odb.Point
+"Update the orientation (rotation) of the transform object, odb.dbInst.getTransform() function must be called before calling this function.",odb.dbTransform.setOrient(,str,
+"Update the x and y location of the transform object, odb.dbInst.getTransform() function must be called before calling this function.",odb.dbTransform.setOffset(,odb.Point(point),
+"Update the x and y location and the orientation (rotation) of the transform object, odb.dbInst.getTransform() function must be called before calling this function.",odb.dbTransform.setTransform(,"str, odb.Point",
+Invert the x and y location and the rotation (orientation) of the transform,odb.dbTransform.invert(),,
+Set the x and y location of the point object,odb.Point(,"int(x), int(y)",odb.Point
+"v=True to set the instance as a ""do not touch” or “don’t touch” type instance. Use v=False to reset the ""do not touch"" setting.",odb.dbInst.setDoNotTouch(,bool(v),
+"Return True if the instance is set as ""do not touch"" instance, return False if the instance is not set as ""do not touch"" instance",odb.dbInst.isDoNotTouch(),,bool
+Return True if the instance is placed.,odb.dbInst.isPlaced(),,bool
+Get the net connected to this pin,odb.dbITerm.getNet(),,odb.dbNet
+Return True if the pin is an output pin of the instance. Return False if the pin is not an output pin of the instance.,odb.dbITerm.isOutputSignal(),,bool
+Return True if the pin is an input pin of the instance. Return False if the pin is not an input pin of the instance.,odb.dbITerm.isInputSignal(),,bool
+"Get the signal type of the net. Return ""POWER"" if the net is a power (VDD) net. Return ""GROUND"" is the net is a ground (VSS) net.",odb.dbNet.getSigType(),,str
+"Set the signal type of the net. Set type to ""POWER"" if the net is a power (VDD) net. Set type to ""GROUND"" is the net is a ground (VSS) net.",odb.dbNet.setSigType(,str(type),
+Get the cut layer class rule of the technology layer,odb.dbTechLayer.getTechLayerCutClassRules(,,list(odb.dbTechLayerCutClassRule)
+Upsize or downsize the instance with the input “master” library cell,odb.dbInst.swapMaster(,odb.dbMaster(master),
+Use name to find the master cell (library cell). Return None if the name does not match any master cell.,odb.dbDatabase.findMaster(,str(name),odb.dbMaster
+Create a clock signal at the clk_i port with a period of 50 ps and name it core_clk.,openroad.Design.evalTclString(“create_clock -period 50 [get_ports clk_i] -name core_clock”),,
+"Return True if the net’s disconnected flag is set to True, which typically means the net is disconnected from all pins. Return False if the flag is set to False, indicating that the net has connections with pins.",odb.dbNet.isDisconnected(),,Bool
+Print opcodes and data of its wire,odb.dbNet.printWire(),,
+"Return True if the master is a filler cell, return False if the master is not a filler cell.",odb.dbMaster.isFiller(),,bool
