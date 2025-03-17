@@ -52,7 +52,7 @@ python3 train2ndStage.py --loadModelPath ./Saved_Model/OpenROAD-Agent-32B-1stSta
 python3 train3rdStage.py --modelSize 32 --batchSize 1 --epoch 0.01 --OpenROADPath ../OpenROAD/build/src/openroad --logSavePath ./training_log.xlsx --loadDesignTime 2 --maxTestCaseWaitTime 120 --commandFlushTime 0.1
 ```
 
-
+### Retraining OpenROAD-Assistant
 [*train1stStage_ORA.py*](./train1stStage_ORA.py) is the script used to launch the 1st-stage training scheme for the [*OpenROAD-Assistant*](https://ieeexplore.ieee.org/document/10740242) model in Proc. MLCAD 2024. Simply run the following command to start the training process. The trained LoRA adapter will be saved in the [*./Saved_Model*](./Saved_Model) directory.
 - "***--dbTrainSetPath***": Path to the database-based (DB-based) data points. The default path is [*../EDA-Corpus-v2/DB-v2.xlsx*](../EDA-Corpus-v2/DB-v2.xlsx).
 - "***--flowTrainSetPath***": Path to the flow-based data points. The default path is [*../EDA-Corpus-v2/Flow-v2.xlsx*](../EDA-Corpus-v2/Flow-v2.xlsx).
