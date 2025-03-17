@@ -61,7 +61,7 @@ python3 train1stStage_ORA.py --dbTrainSetPath ../EDA-Corpus-v2/DB-v2.xlsx --flow
 ```
 
 ## Testing
-- [*test_pass@K.py*](./test_pass@K.py) and [*test_iterate.py*](./test_iterate.py) are the scripts to launch the 2nd stage training scheme in the paper. The parameters used in the paper is given as the default values for the flags.
+[*test_pass@K.py*](./test_pass@K.py) and [*test_iterate.py*](./test_iterate.py) are the scripts to launch the 2nd stage training scheme in the paper. The parameters used in the paper is given as the default values for the flags.
 - *--testSetPath*: Path to the database-based (DB-based) data points. The default path is [*../EDA-Corpus-v2/TestSet.xlsx*](../EDA-Corpus-v2/TestSet.xlsx).
 - *--resultPath*: Path to the test result storing directory. The default path is [*../Result/*](../Result/).
 - *--RAGApiPath*: Path to the OpenROAD Python API documentation for the RAG system. The default path is [*../RAGData/RAGAPIs.csv*](../RAGData/RAGAPIs.csv).
@@ -86,5 +86,5 @@ python3 train1stStage_ORA.py --dbTrainSetPath ../EDA-Corpus-v2/DB-v2.xlsx --flow
 python3 test_pass@K.py --testSetPath ../EDA-Corpus-v2/TestSet.xlsx --resultPath ./Result/ --RAGApiPath ../RAGData/RAGAPIs.csv --RAGCodePath ../RAGData/RAGCodePiece.csv --OpenROADPath ../OpenROAD/build/src/openroad --modelName ./Saved_Model/OpenROAD-Agent-32B-3rdStage --loadDesignTime 2 --maxTestCaseWaitTime 120 --commandFlushTime 0.1
 ```
 ```
-python3 test_iterate@K.py --testSetPath ../EDA-Corpus-v2/TestSet.xlsx --resultPath ./Result/ --RAGApiPath ../RAGData/RAGAPIs.csv --RAGCodePath ../RAGData/RAGCodePiece.csv --OpenROADPath ../OpenROAD/build/src/openroad --modelName ./Saved_Model/OpenROAD-Agent-32B-3rdStage --loadDesignTime 2 --maxTestCaseWaitTime 120 --commandFlushTime 0.1
+python3 test_iterate.py --testSetPath ../EDA-Corpus-v2/TestSet.xlsx --resultPath ./Result/ --RAGApiPath ../RAGData/RAGAPIs.csv --RAGCodePath ../RAGData/RAGCodePiece.csv --OpenROADPath ../OpenROAD/build/src/openroad --modelName ./Saved_Model/OpenROAD-Agent-32B-3rdStage --loadDesignTime 2 --maxTestCaseWaitTime 120 --commandFlushTime 0.1
 ```
