@@ -46,7 +46,7 @@ def Train(
   # load db data
   promptSet = pd.read_excel(dbTrainSetPath, 'prompt', header=None).iloc[1:].reset_index(drop=True)
   promptSet = promptSet.rename(columns={0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5"}) # 6 different tones
-  codeSet = pd.read_excel(dbTrainSetPath, 'correct code', header=None).iloc[1:].reset_index(drop=True)
+  codeSet = pd.read_excel(dbTrainSetPath, 'code', header=None).iloc[1:].reset_index(drop=True)
   codeSet = codeSet.rename(columns={0: "code"})
   for i in range(len(promptSet)):
     if i == 238:# Save the last 20 for testing

@@ -6,6 +6,9 @@ The dataset shuffling variable is hardcoded in each training script to ensure th
 The [*./Saved_Model*](./Saved_Model) directory serves as the default path for storing the trained OpenROAD-Agents and the retrained OpenROAD-Assistant.
 
 ## Training
+
+### 1st Stage Training
+![1stStage](../Image/1stStage.png)
 [*train1stStage.py*](./train1stStage.py) is the script used to launch the 1st-stage training scheme described in the paper. The parameters used in the paper are provided as the default values for the flags. Simply run the following command to start the training process. The trained LoRA adapter will be saved in the [*./Saved_Model*](./Saved_Model) directory.
 - *--dbTrainSetPath*: Path to the database-based (DB-based) data points. The default path is [*../EDA-Corpus-v2/DB-v2.xlsx*](../EDA-Corpus-v2/DB-v2.xlsx).
 - *--flowTrainSetPath*: Path to the flow-based data points. The default path is [*../EDA-Corpus-v2/Flow-v2.xlsx*](../EDA-Corpus-v2/Flow-v2.xlsx).
@@ -19,7 +22,8 @@ The [*./Saved_Model*](./Saved_Model) directory serves as the default path for st
 python3 train1stStage.py --dbTrainSetPath ../EDA-Corpus-v2/DB-v2.xlsx --flowTrainSetPath ../EDA-Corpus-v2/Flow-v2.xlsx --savePath ./Saved_Model/ --RAGApiPath ../RAGData/RAGAPIs.csv --RAGCodePath ../RAGData/RAGCodePiece.csv --modelSize 32 --batchSize 1 --epoch 2
 ```
 
-
+### 2nd Stage Training
+![2ndStage](../Image/2ndStage.png)
 [*train2ndStage.py*](./train2ndStage.py) is the script used to launch the 2nd-stage training scheme described in the paper. The parameters used in the paper are provided as the default values for the flags. Simply run the following command to start the training process. The trained LoRA adapter will be saved in the [*./Saved_Model*](./Saved_Model) directory.
 - *--loadModelPath*: Path to the previously trained LoRA adapter. The default path is *./Saved_Model/OpenROAD-Agent-32B-1stStage* after running the script [*train1stStage.py*](./train1stStage.py).
 - *--modelSize*: Pass 32 or 7 to select the size of the [Qwen2.5-Coder model](https://huggingface.co/collections/Qwen/qwen25-coder-66eaa22e6f99801bf65b0c2f) to train. The default value is *32*.
@@ -30,7 +34,8 @@ python3 train1stStage.py --dbTrainSetPath ../EDA-Corpus-v2/DB-v2.xlsx --flowTrai
 python3 train2ndStage.py --loadModelPath ./Saved_Model/OpenROAD-Agent-32B-1stStage --modelSize 32 --batchSize 1 --epoch 1
 ```
 
-
+### 3rd Stage Training
+![3rdStage](../Image/3rdStage.png)
 [*train3rdStage.py*](./train3rdStage.py) is the script used to launch the 3rd-stage training scheme described in the paper. The parameters used in the paper are provided as the default values for the flags. Simply run the following command to start the training process. The trained LoRA adapter will be saved in the [*./Saved_Model*](./Saved_Model) directory.
 - *--flowTrainSetCombinationPath*: Path to the file helping the framework decide which .odb file to read. The default path is [*../EDA-Corpus-v2/task_combinations.txt*](../EDA-Corpus-v2/task_combinations.txt).
 - *--loadModelPath*: Path to the previously trained LoRA adapter, the default path is *./Saved_Model/OpenROAD-Agent-32B-2ndStage* after running the script [*train2ndStage.py*](./train2ndStage.py).

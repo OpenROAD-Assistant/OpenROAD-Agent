@@ -48,10 +48,10 @@ def Train(
   promptSet = pd.read_excel(dbTrainSetPath, 'prompt', header=None).iloc[1:].reset_index(drop=True)
   promptSet = promptSet.rename(columns={0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5"}) # 6 different tones
   # 6 different wrong code and the corresponding messages
-  wrongCodeSet = pd.read_excel(dbTrainSetPath, 'wrong code and message', header=None).iloc[1:].reset_index(drop=True)
+  wrongCodeSet = pd.read_excel(dbTrainSetPath, 'wrong_message', header=None).iloc[1:].reset_index(drop=True)
   wrongCodeSet = wrongCodeSet.rename(columns={0: "w0", 1: "m0", 2: "w1", 3: "m1", 4: "w2", 5: "m2", 6: "w3", 7: "m3", 8: "w4", 9: "m4", 10: "w5", 11: "m5"})
   # correct code
-  codeSet = pd.read_excel(dbTrainSetPath, 'correct code', header=None).iloc[1:].reset_index(drop=True)
+  codeSet = pd.read_excel(dbTrainSetPath, 'code', header=None).iloc[1:].reset_index(drop=True)
   codeSet = codeSet.rename(columns={0: "code"})
 
   for i in range(len(promptSet)):
