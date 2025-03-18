@@ -66,11 +66,9 @@ class BatchedDataLoader:
   def __len__(self):
     return self.num_batches
 
-
 class CustomTrainer(Trainer):
 
   def get_train_dataloader(self):
-    """Override to use our custom data loader"""
     if self.train_dataset is None:
       raise ValueError("Trainer: training requires a train_dataset.")
       

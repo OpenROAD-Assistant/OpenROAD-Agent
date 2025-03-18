@@ -13,7 +13,7 @@ This directory contains an augmented version of the [EDA-Corpus dataset](https:/
 The row indices align across the prompt, code, and wrong_message sheets.
 
 ### Prompts
-![tones](../Image/tones.png)
+![tones](../etc/tones.png)
 
 We include different tones of prompts in this version of the EDA-Corpus dataset. All prompts in [DB-v2.xlsx](./DB-v2.xlsx) and [Flow-v2.xlsx](./Flow-v2.xlsx) are paraphrased and organized in this order.
 
