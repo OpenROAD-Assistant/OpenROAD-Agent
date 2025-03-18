@@ -250,7 +250,7 @@ def Run(
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description = "parsing the path")
   parser.add_argument("--testSetPath", type = str, default = "../EDA-Corpus-v2/TestSet.xlsx")
-  parser.add_argument("--resultPath", type = str, default = "../Result/")
+  parser.add_argument("--resultPath", type = str, default = "../result/")
   parser.add_argument("--RAGApiPath", type = str, default = "../RAGData/RAGAPIs.csv")
   parser.add_argument("--RAGCodePath", type = str, default = "../RAGData/RAGCodePiece.csv")
   parser.add_argument('--OpenROADPath', type=str, default='../OpenROAD/build/src/openroad')
