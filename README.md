@@ -12,6 +12,7 @@ Large language models (LLMs) are increasingly being used in various domains, inc
   - [RAGData](./RAGData/): Contains files for building the retrieval-augmented generation (RAG) database used in training and testing.
   - [result](./result/): Default directory for storing test results generated using scripts in [./src](./src).
   - [src](./src/): Contains scripts for reproducing LLM training results and running tests.
+  - [requirement.txt](./requirement.txt): Contains packages for building the training and testing environment.
 
 ## Build OpenROAD and Pythonize the Macro Placer
 
