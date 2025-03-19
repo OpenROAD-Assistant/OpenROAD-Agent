@@ -5,7 +5,7 @@ The dataset shuffling variable is hardcoded in each training script to ensure th
 
 The [*./Saved_Model*](./Saved_Model) directory serves as the default path for storing the trained OpenROAD-Agents and the retrained OpenROAD-Assistant.
 
-Model weights can be found [here](https://drive.google.com/drive/folders/1K8IqgZuiulumGWP7Qsa-GyYNV6zZU1B-?usp=sharing).
+Model weights can be found on [Google Drive](https://drive.google.com/drive/folders/1K8IqgZuiulumGWP7Qsa-GyYNV6zZU1B-?usp=sharing).
 
 ## Training
 
