@@ -73,12 +73,12 @@ python3 train1stStage_ORA.py --dbTrainSetPath ../EDA-Corpus-v2/DB-v2.xlsx --flow
 - "***--resultPath***": Path to the test result storing directory. The default path is [*../result/*](../result/).
 - "***--RAGApiPath***": Path to the OpenROAD Python API documentation for the RAG system. The default path is [*../RAGData/RAGAPIs.csv*](../RAGData/RAGAPIs.csv).
 - "***--RAGCodePath***": Path to the OpenROAD Python code template for the RAG system. The default path is [*../RAGData/RAGCodePiece.csv*](../RAGData/RAGCodePiece.csv).
-- "***--OpenROADPath***": Path to the executable OpenROAD binary. THe default path is "***../OpenROAD/build/src/openroad***".
+- "***--OpenROADPath***": Path to the executable OpenROAD binary. The default path is "***../OpenROAD/build/src/openroad***".
 - "***--modelName***": Path (locally saved) or name (from Hugging Face hub) of the model/adapter. The models/adapters used in the paper are:
-  - *./Saved_Model/OpenROAD-Agent-32B-3rdStage*
+  - *./Saved_Model/OpenROAD-Agent-32B-3rdStage* (available on [Google Drive](https://drive.google.com/drive/folders/1K8IqgZuiulumGWP7Qsa-GyYNV6zZU1B-?usp=sharing))
   - *./Saved_Model/OpenROAD-Agent-32B-2ndStage*
   - *./Saved_Model/OpenROAD-Agent-32B-1stStage*
-  - *./Saved_Model/OpenROAD-Agent-7B-3rdStage*
+  - *./Saved_Model/OpenROAD-Agent-7B-3rdStage* (available on [Google Drive](https://drive.google.com/drive/folders/1K8IqgZuiulumGWP7Qsa-GyYNV6zZU1B-?usp=sharing))
   - *./Saved_Model/OpenROAD-Agent-7B-2ndStage*
   - *./Saved_Model/OpenROAD-Agent-7B-1stStage*
   - *Qwen/Qwen2.5-Coder-32B-Instruct*
