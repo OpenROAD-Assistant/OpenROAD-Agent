@@ -43,5 +43,5 @@ Please see [src](./src/).
 
 ## Cite this work
 ```
-B. -Y. Wu, U. Sharma, A. Rovinski, and V. A. Chhabria, "OpenROAD Agent: An Intelligent Self-Correcting Script Generator for OpenROAD," 2025 IEEE International Conference on LLM-Aided Design (ICLAD), SStanford, California (CA), USA, 2025,
+B. -Y. Wu, U. Sharma, A. Rovinski, and V. A. Chhabria, "OpenROAD Agent: An Intelligent Self-Correcting Script Generator for OpenROAD," 2025 IEEE International Conference on LLM-Aided Design (ICLAD), Stanford, California (CA), USA, 2025,
 ```
